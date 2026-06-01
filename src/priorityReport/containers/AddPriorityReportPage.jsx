@@ -8,6 +8,7 @@ import { HeaderContext } from "@/commons/components"
 import { useSearchParams } from "react-router";
 import ModifiedFormAddPriorityReport from '../components/ModifiedFormAddPriorityReport'
 import getAddedDataBinding from '../services/getAddedDataBinding'
+import getListEventCreation from "@/eventCreation/services/getListEventCreation";
 
 const AddPriorityReportPage = props => {
   const [isLoading, setIsLoading] = useState({
@@ -15,6 +16,16 @@ const AddPriorityReportPage = props => {
 
   });
   const { setTitle } = useContext(HeaderContext);
+  const [eventOptions, setEventOptions] = useState([]);
+
+  useEffect(() => {
+	const fetchEvents = async () => {
+		const { data } = await getListEventCreation();
+		setEventOptions(data.data);
+	};
+
+	fetchEvents();
+	}, []);
 
   useEffect(() => {
     setTitle("Add PriorityReport Page")
@@ -50,7 +61,8 @@ const [addedDataBinding, setAddedDataBinding] = useState()
 		(<>
 		 <ModifiedFormAddPriorityReport
 			{...{ 
-				addedDataBinding
+				addedDataBinding,
+				eventOptions
 				}}
 		 /> 
 		</>)  : (<></>)}

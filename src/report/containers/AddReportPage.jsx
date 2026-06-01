@@ -7,6 +7,7 @@ import { useParams } from "@/commons/hooks/useParams"
 import { HeaderContext } from "@/commons/components"
 import { useSearchParams } from "react-router";
 import FormAddReport from '../components/FormAddReport'
+import getListEventCreation from "@/eventCreation/services/getListEventCreation";
 
 const AddReportPage = props => {
   const [isLoading, setIsLoading] = useState({
@@ -14,6 +15,16 @@ const AddReportPage = props => {
 
   });
   const { setTitle } = useContext(HeaderContext);
+  const [eventOptions, setEventOptions] = useState([]);
+
+  useEffect(() => {
+	const fetchEvents = async () => {
+		const { data } = await getListEventCreation();
+		setEventOptions(data.data);
+	};
+
+	fetchEvents();
+	}, []);
 
   useEffect(() => {
     setTitle("Add Report Page")
@@ -33,6 +44,7 @@ const AddReportPage = props => {
 	>
 		<FormAddReport
 			{...props}
+			eventOptions={eventOptions}
 		/>
 	</Layouts.FormContainerLayout>
 

@@ -21,8 +21,7 @@ import saveReport from '../services/saveReport'
 import { notifyError, notifySuccess} from "@/commons/utils/toaster";
 import * as Layouts from "@/commons/layouts";
 
-const FormAddReport = ({ 
- }) => {
+const FormAddReport = ({ eventOptions }) => {
   const { 
     control, 
     handleSubmit,
@@ -119,14 +118,16 @@ const FormAddReport = ({
 	        control={control}
 	        rules={{ required: "Harap masukkan event id" }} 
 	        render={({ field, fieldState }) => (
-	        <InputField
-	          label="Event ID"
-	          placeholder="Masukkan event id"
-	          type="number"
-	          fieldState={fieldState}
-	          {...field}
-	          isRequired={true}
-	        />
+	        <SelectionField
+				label="Event"
+				options={eventOptions}
+				optionKey="eventId"
+				optionLabel="eventId"
+				placeholder="Masukkan event id"
+				fieldState={fieldState}
+				{...field}
+				isRequired={true}
+			/>
 	        )}
 	      />
 	

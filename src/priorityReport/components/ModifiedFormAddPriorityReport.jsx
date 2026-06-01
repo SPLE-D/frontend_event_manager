@@ -28,7 +28,7 @@ const priorityReportOptions = [
   { value: "CRITICAL", label: "CRITICAL" },
 ];
 
-const ModifiedFormAddPriorityReport = () => {
+const ModifiedFormAddPriorityReport = ({ eventOptions }) => {
   const {
     control,
     handleSubmit,
@@ -49,6 +49,7 @@ const ModifiedFormAddPriorityReport = () => {
 	})
     .then(({ data: { data } }) => {
   	notifySuccess(`Save PriorityReport berhasil!`);
+	navigate("/priorityreport");
     })
     .catch((error) => {
       console.error(error);
@@ -122,21 +123,23 @@ const ModifiedFormAddPriorityReport = () => {
 	
 	,
 	      <Controller
-	        key="eventId"
-	        name="eventId"
-	        control={control}
-	        rules={{ required: "Harap masukkan event id" }} 
-	        render={({ field, fieldState }) => (
-	        <InputField
-	          label="Event ID"
-	          placeholder="Masukkan event id"
-	          type="number"
-	          fieldState={fieldState}
-	          {...field}
-	          isRequired={true}
-	        />
-	        )}
-	      />
+			key="eventId"
+			name="eventId"
+			control={control}
+			rules={{ required: "Harap pilih event id" }}
+			render={({ field, fieldState }) => (
+				<SelectionField
+				label="Event ID"
+				options={eventOptions}
+				optionKey="eventId"
+				optionLabel="eventId"
+				placeholder="Pilih event id"
+				fieldState={fieldState}
+				{...field}
+				isRequired={true}
+				/>
+			)}
+			/>
 	
 		  ,
 	
