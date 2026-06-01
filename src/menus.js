@@ -96,7 +96,7 @@ addMenu({
 
 addMenu({
 	id: '_eXYCcFZ3EfG2IPAwKxqHFA',
-	route: '',
+	route: '/priorityreport',
     label: 'PriorityReport',
     permission: '',
 	subMenus: [],

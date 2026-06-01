@@ -5,7 +5,7 @@ import AddPriorityReportPage from './containers/AddPriorityReportPage'
 
 const priorityReportRoutes = [
 { 
-    path: "",
+    path: "/priorityreport",
     element: <TablePriorityReportPage />,
   }	
 ,
