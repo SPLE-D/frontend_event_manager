@@ -27,7 +27,9 @@ const FormEditCheckIn = ({
   const { 
     control, 
     handleSubmit,
-  } = useForm()
+  } = useForm({
+    defaultValues: checkInData
+  })
   
   
   

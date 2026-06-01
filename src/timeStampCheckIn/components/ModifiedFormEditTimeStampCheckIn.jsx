@@ -28,7 +28,9 @@ const ModifiedFormEditTimeStampCheckIn = ({
   const { 
     control, 
     handleSubmit,
-  } = useForm()
+  } = useForm({
+    defaultValues: timeStampCheckInData
+  })
   
   
   
