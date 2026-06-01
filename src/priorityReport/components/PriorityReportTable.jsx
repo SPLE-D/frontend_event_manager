@@ -39,7 +39,7 @@ const PriorityReportTable = ({
             id: "priorityReport",
             condition: "",
             label: "PriorityReport",
-            featureName: "invalid",
+            featureName: "PriorityReport",
             editable: false
           }
   ]}

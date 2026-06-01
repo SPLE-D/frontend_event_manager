@@ -21,14 +21,18 @@ import savePriorityReport from '../services/savePriorityReport'
 import { notifyError, notifySuccess} from "@/commons/utils/toaster";
 import * as Layouts from "@/commons/layouts";
 
-const ModifiedFormAddPriorityReport = ({ 
-	addedDataBinding
- }) => {
-  const { 
-    control, 
+const priorityReportOptions = [
+  { value: "LOW", label: "LOW" },
+  { value: "MEDIUM", label: "MEDIUM" },
+  { value: "HIGH", label: "HIGH" },
+  { value: "CRITICAL", label: "CRITICAL" },
+];
+
+const ModifiedFormAddPriorityReport = () => {
+  const {
+    control,
     handleSubmit,
-  } = useForm()
-  
+  } = useForm();
   
   
   
@@ -37,8 +41,12 @@ const ModifiedFormAddPriorityReport = ({
   const onSubmitEvent = (data) => {
     const cleanData = cleanFormData(data)
     savePriorityReport({
-      ...cleanData,
-    })
+		eventId: String(cleanData.eventId),
+		totalAttendee: String(cleanData.totalAttendee),
+		totalRevenue: String(cleanData.totalRevenue),
+		summary: cleanData.summary,
+		PriorityReport: cleanData.priorityReport,
+	})
     .then(({ data: { data } }) => {
   	notifySuccess(`Save PriorityReport berhasil!`);
     })
@@ -141,9 +149,9 @@ const ModifiedFormAddPriorityReport = ({
 	        <SelectionField
 	          
 	          label="PriorityReport"
-	          options={addedDataBinding}
-	          optionKey="PriorityReport"
-	          optionLabel="PriorityReport"
+	          options={priorityReportOptions}
+	          optionKey="value"
+	          optionLabel="label"
 	          placeholder="Masukkan priorityreport"
 	          fieldState={fieldState}
 	          {...field}
