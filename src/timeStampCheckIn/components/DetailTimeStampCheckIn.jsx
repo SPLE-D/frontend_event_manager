@@ -18,6 +18,24 @@ const DetailTimeStampCheckIn = ({ data }) => {
       item={data}
       itemsAttrs={[
                 {
+                  id: "checkinid",
+                  condition: "",
+                  label: "Check In ID",
+                  featureName: "checkInId",
+                }
+        ,        {
+                  id: "attended",
+                  condition: "",
+                  label: "Attended",
+                  featureName: "attended",
+                }
+        ,        {
+                  id: "attendeeid",
+                  condition: "",
+                  label: "Attendee ID",
+                  featureName: "attendeeId",
+                }
+        ,        {
                   id: "timestamp",
                   condition: "",
                   label: "Timestamp",
