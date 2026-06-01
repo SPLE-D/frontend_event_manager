@@ -23,8 +23,9 @@ const GlobalRoutes = () => {
 	...checkInRoutes, 
 	...eventCreationRoutes, 
 	...notificationRoutes, 
-	...reportRoutes, 
-	...reviewRoutes, 
+	...reportRoutes,
+	...reviewRoutes,
+	...priorityReportRoutes,
   ])
   return router
 }
