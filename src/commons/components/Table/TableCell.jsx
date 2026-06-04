@@ -27,6 +27,8 @@ const TableCell = ({
   };
 
   const isArray = checkIsArray(children);
+  const displayChildren =
+    typeof children === "boolean" ? (children ? "True" : "False") : children;
 
   return isHeading ? (
     <th
@@ -52,7 +54,7 @@ const TableCell = ({
       ) : isArray ? (
         children.join(", ")
       ) : (
-        children
+        displayChildren
       )}
     </td>
   );

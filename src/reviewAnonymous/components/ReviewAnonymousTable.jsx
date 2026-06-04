@@ -146,17 +146,6 @@ const ReviewAnonymousTable = ({
             </Button>
           </Link>
   ,
-          <Link to={`/reviewanonymous/${reviewAnonymousItem.reviewId}/edit`}>
-    <Button
-      id="_t_tMcV8uEfGropGdd4B6sg"
-      size="sm"
-      variant=
-          "primary"
-    >
-      Edit
-    </Button>
-  </Link>
-  ,
           <Link to=''>
     <Button
       id="_reviewAnonymousTableDeleteEvent"
@@ -169,6 +158,17 @@ const ReviewAnonymousTable = ({
       }}
     >
       Delete
+    </Button>
+  </Link>
+  ,
+          <Link to={`/reviewanonymous/${reviewAnonymousItem.reviewId}/edit`}>
+    <Button
+      id="_t_tMcV8uEfGropGdd4B6sg"
+      size="sm"
+      variant=
+          "primary"
+    >
+      Edit
     </Button>
   </Link>
         ]}

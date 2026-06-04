@@ -57,6 +57,8 @@ const ListMobileFirst = ({ label, content, condition }) => {
   const isCurrency = condition === "isCurrency";
   const isDayRemaining = condition === "isDayRemaining";
   const isStatus = condition === "isStatus";
+  const displayContent =
+    typeof content === "boolean" ? (content ? "True" : "False") : content;
 
   return (
     <>
@@ -94,7 +96,7 @@ const ListMobileFirst = ({ label, content, condition }) => {
           <h4 className={`pl-4 pr-4 mt-0 mb-0 ${statusColor(content)}`}>
             {isDateFormat(content)
               ? formatToHumanDate(content)
-              : (content ?? "-")}
+              : (displayContent ?? "-")}
           </h4>
         </div>
       )}
@@ -108,6 +110,7 @@ ListMobileFirst.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.array,
+    PropTypes.bool,
   ]),
   condition: PropTypes.string,
 };

@@ -76,6 +76,8 @@ const DetailMobileFirst = ({ label, content, condition }) => {
   const isCurrency = !isNaN(parseInt(content)) && condition === "isCurrency";
   const isStatus = condition === "isStatus";
   const textStyle = condition === "title" ? "text-lg" : "text-base";
+  const displayContent =
+    typeof content === "boolean" ? (content ? "True" : "False") : content;
 
   return (
     <>
@@ -116,7 +118,7 @@ const DetailMobileFirst = ({ label, content, condition }) => {
                 {content}
               </a>
             ) : (
-              (content ?? "-")
+              (displayContent ?? "-")
             )}
           </h3>
         </div>
@@ -131,6 +133,7 @@ DetailMobileFirst.propTypes = {
     PropTypes.string,
     PropTypes.number,
     PropTypes.array,
+    PropTypes.bool,
   ]),
   condition: PropTypes.string,
 };

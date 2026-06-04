@@ -27,7 +27,7 @@ useEffect(() => {
 		const fetchData = async () => {
 			try {
 				setIsLoading(prev => ({...prev, detailReviewAnonymous: true}))
-				const { data: detailReviewAnonymous } = await getDetailReviewAnonymous({ reviewId, reviewId })
+				const { data: detailReviewAnonymous } = await getDetailReviewAnonymous({ reviewId })
 				setDetailReviewAnonymous(detailReviewAnonymous.data)
 			} finally {
 				setIsLoading(prev => ({...prev, detailReviewAnonymous: false}))

@@ -20,6 +20,7 @@ import cleanFormData from "@/commons/utils/cleanFormData";
 import updateTypeEventCreation from '../services/updateTypeEventCreation'
 import { notifyError, notifySuccess} from "@/commons/utils/toaster";
 import * as Layouts from "@/commons/layouts";
+import { EVENT_TYPE_OPTIONS } from "../constants/eventType";
 
 const ModifiedFormEditEvent = ({ 
 	detailTypeEventCreation
@@ -164,9 +165,9 @@ const ModifiedFormEditEvent = ({
 	        <SelectionField
 	          
 	          label="Event Type"
-	          options={eventType}
-	          optionKey="eventType"
-	          optionLabel="PUBLIC"
+	          options={EVENT_TYPE_OPTIONS}
+	          optionKey="value"
+	          optionLabel="label"
 	          placeholder="Masukkan event type"
 	          fieldState={fieldState}
 	          defaultValue={detailTypeEventCreation.eventType}

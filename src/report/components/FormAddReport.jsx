@@ -22,6 +22,7 @@ import { notifyError, notifySuccess} from "@/commons/utils/toaster";
 import * as Layouts from "@/commons/layouts";
 
 const FormAddReport = ({ 
+	eventListData
  }) => {
   const { 
     control, 
@@ -112,26 +113,28 @@ const FormAddReport = ({
 	        )}
 	      />
 	
-	,
+		  ,
+	
+	
 	      <Controller
 	        key="eventId"
 	        name="eventId"
 	        control={control}
-	        rules={{ required: "Harap masukkan event id" }} 
+	        rules={{ required: "Harap pilih event name" }} 
 	        render={({ field, fieldState }) => (
-	        <InputField
-	          label="Event ID"
-	          placeholder="Masukkan event id"
-	          type="number"
+	        <SelectionField
+	          
+	          label="Event Name"
+	          options={eventListData}
+	          optionKey="eventId"
+	          optionLabel="name"
+	          placeholder="Masukkan event name"
 	          fieldState={fieldState}
 	          {...field}
 	          isRequired={true}
 	        />
 	        )}
 	      />
-	
-		  ,
-	
 		  ]}
 	
 		  itemsEvents={[

@@ -7,6 +7,7 @@ import { useParams } from "@/commons/hooks/useParams"
 import { HeaderContext } from "@/commons/components"
 import { useSearchParams } from "react-router";
 import FormAddReport from '../components/FormAddReport'
+import getEventListData from '../services/getEventListData'
 
 const AddReportPage = props => {
   const [isLoading, setIsLoading] = useState({
@@ -19,6 +20,20 @@ const AddReportPage = props => {
     setTitle("Add Report Page")
   }, []);
 
+
+const [eventListData, setEventListData] = useState()
+
+  useEffect(() => {
+    const fetch = async () => {
+	  setIsLoading(prev => ({...prev, addReport: true}))
+      const { data: eventListDataResponse } = await getEventListData({  })
+
+	  setEventListData(eventListDataResponse.data)
+	  setIsLoading(prev => ({...prev, addReport: false}))
+    }
+	fetch()
+  }, [])
+
   return (
 	<Layouts.ViewContainerLayout
 		buttons={
@@ -29,11 +44,16 @@ const AddReportPage = props => {
 	>
 <Layouts.FormContainerLayout
 		singularName={"Report"}
-		
+		isLoading={isLoading.addReport}
 	>
-		<FormAddReport
-			{...props}
-		/>
+		{eventListData ? 
+		(<>
+		 <FormAddReport
+			{...{ 
+				eventListData
+				}}
+		 /> 
+		</>)  : (<></>)}
 	</Layouts.FormContainerLayout>
 
 	</Layouts.ViewContainerLayout>
